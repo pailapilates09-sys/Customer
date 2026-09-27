@@ -20,3 +20,7 @@ Pages carry a `noindex` meta tag during review. **A published GitHub Pages site 
 The directions page uses the map pin supplied by Paila (27.6728007, 85.3155726) and links to Google Maps. The written street address and opening hours are still pending.
 
 The operational workbook and confidential customer or staff data belong in private Paila Drive. Only owner-approved public exports belong here. No booking, payment, contact form or member authentication is active.
+
+## Studio layout preview
+
+`/studio/` contains the interactive 2D plan and lazy-loaded 3D cutaway. Both portals consume the same geometry version and canonical SHA-256, recorded in `studio/manifest.json`. The view remains a source-derived preview; height is illustrative and dimensional conflicts remain unresolved. Original plan/video and private lineage stay in restricted project storage. Three.js 0.170.0 is vendored with its MIT license. No build or runtime CDN is needed.
