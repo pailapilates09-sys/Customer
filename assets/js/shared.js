@@ -13,4 +13,5 @@ document.addEventListener('keydown', e => {
     menu.focus();
   }
 });
-document.querySelector('#year').textContent = String(new Date().getFullYear());
+const year = document.querySelector('#year');
+if (year) year.textContent = String(new Date().getFullYear());
