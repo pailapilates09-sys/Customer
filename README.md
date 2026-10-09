@@ -24,3 +24,7 @@ The operational workbook and confidential customer or staff data belong in priva
 ## Studio layout preview
 
 `/studio/` contains the interactive 2D plan and lazy-loaded 3D cutaway. Both portals consume the same geometry version and canonical SHA-256, recorded in `studio/manifest.json`. The view remains a source-derived preview; height is illustrative and dimensional conflicts remain unresolved. Original plan/video and private lineage stay in restricted project storage. Three.js 0.170.0 is vendored with its MIT license. No build or runtime CDN is needed.
+
+## 09 recovery links
+
+[Recovery files, live pages and ownership](docs/DRIVE_RECOVERY_09.md) records the native 09 Docs and Sheets. [Open this repository](https://github.com/pailapilates09-sys/Customer).
