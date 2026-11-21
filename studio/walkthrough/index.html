@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f9f6ef">
+  <meta name="description" content="Walk through the Paila Pilates studio design, from the entrance to the reformer room.">
+  <title>Studio walkthrough | Paila Pilates</title>
+  <link rel="stylesheet" href="walk.css">
+  <script type="module" src="walk.js"></script>
+</head>
+<body>
+  <main id="main">
+    <div class="journey">
+      <div class="viewport">
+        <header class="masthead">
+          <a href="../../" class="brand" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
+          <h1>Studio walkthrough</h1>
+          <nav class="header-actions" aria-label="Website navigation">
+            <a href="../../explore.html" class="portal-link">Site menu</a>
+            <a href="../" class="plan-link">Floor plan</a>
+            <button id="motion" type="button" aria-pressed="false" hidden>Still views</button>
+          </nav>
+        </header>
+        <section class="scene" aria-label="Eye-level walkthrough of the studio design">
+          <picture class="poster">
+            <source media="(max-width: 700px) and (orientation: portrait)" srcset="media/touch-entrance.webp">
+            <img id="poster" src="media/wide-entrance.webp" alt="View through the glazed entrance toward the curved reception desk in Paila’s studio model." fetchpriority="high">
+          </picture>
+          <canvas id="film" aria-hidden="true"></canvas>
+          <div class="scene-shade" aria-hidden="true"></div>
+          <p id="hint" class="hint" hidden><span class="gesture" aria-hidden="true"></span><span id="hint-text">Scroll to walk</span></p>
+          <button id="hotspot" type="button" class="hotspot" aria-label="Open the first-class guide for this reformer" aria-haspopup="dialog" hidden><span aria-hidden="true">+</span><span class="hotspot-label">Reformer</span></button>
+          <div class="room-caption">
+            <p class="edition">Studio design preview</p>
+            <h2 id="room-name">Entrance</h2>
+            <p id="room-copy">Step through the glazed entrance and follow the curve of the reception desk.</p>
+          </div>
+        </section>
+        <section class="controls" aria-label="Walkthrough controls" hidden>
+          <div class="route">
+            <label class="sr" for="progress">Position along the studio walkthrough</label>
+            <input id="progress" type="range" min="0" max="180" step="1" value="0" aria-valuetext="Entrance">
+            <nav id="stops" aria-label="Jump to a room">
+              <button type="button" aria-current="location" data-stop="0">Entrance</button>
+              <button type="button" data-stop="1">Reception</button>
+              <button type="button" data-stop="2">Lounge</button>
+              <button type="button" data-stop="3">Reformer room</button>
+            </nav>
+          </div>
+          <button id="next-stop" type="button" class="next">Next room</button>
+          <button id="guide-button" type="button" class="next" aria-haspopup="dialog" hidden>First-class guide</button>
+        </section>
+      </div>
+    </div>
+    <section id="static-tour" class="still-fallback" aria-label="Studio room views">
+      <h2>Explore the rooms</h2>
+      <div class="still-images">
+        <figure><img src="media/wide-reception.webp" loading="lazy" alt="Paila’s reception desk beneath two ring lights."><figcaption>Reception</figcaption></figure>
+        <figure><img src="media/wide-lounge.webp" loading="lazy" alt="Seating and coffee shelves in the modelled lounge."><figcaption>Lounge</figcaption></figure>
+        <figure><img src="media/wide-reformer.webp" loading="lazy" alt="Two rows of reformers inside the studio design."><figcaption>Reformer room</figcaption></figure>
+      </div>
+      <a href="#class-notes">Read the first-class guide</a>
+      <p id="class-notes">For a first class, ask the instructor to point out the sliding carriage, footbar and springs. Take a moment to learn the names you will hear during the session.</p>
+    </section>
+    <p id="announce" class="sr" aria-live="polite" aria-atomic="true"></p>
+  </main>
+  <dialog id="guide" aria-labelledby="guide-title">
+    <div class="guide-top"><span>Paila Pilates</span><button id="close-guide" type="button" autofocus>Close</button></div>
+    <img class="guide-photo" src="media/reformer-detail.webp" alt="The upholstered carriage and raised footbar on a reformer in the studio model." loading="lazy">
+    <div class="guide-body">
+      <p class="guide-kicker">First-class guide</p>
+      <h2 id="guide-title">Meet the reformer.</h2>
+      <p>Look for the padded platform inside the frame. It’s called the carriage. It slides along rails, and springs give it resistance.</p>
+      <p>When you arrive for a first class, tell the instructor you’re new. Ask them to point out the footbar and straps and show you how the carriage feels before the session begins.</p>
+      <div class="guide-actions"><button type="button" id="resume">Back to the walk</button><a href="../../schedule.html">Class information</a></div>
+    </div>
+  </dialog>
+</body>
+</html>

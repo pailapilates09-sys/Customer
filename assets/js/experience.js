@@ -7,7 +7,7 @@
   if (!page || !stage || !rail) return;
 
   const items = [
-    { title: 'The studio', kicker: 'Room to move', copy: 'Explore the studio plan in 2D or 3D. The layout is a design preview.', href: 'studio/', action: 'Explore the studio' },
+    { title: 'The studio', kicker: 'Room to move', copy: 'Walk from reception into the reformer room in the studio design.', href: 'studio/walkthrough/', action: 'Walk through the studio' },
     { title: 'Classes', kicker: 'Make space for movement', copy: 'See where class information will live. Times and class details are still awaiting approval.', href: 'schedule.html', action: 'View class information' },
     { title: 'Passes', kicker: 'Find your rhythm', copy: 'Find the place for Paila passes. Prices and terms will appear after approval.', href: 'passes.html', action: 'Explore passes' },
     { title: 'Our people', kicker: 'Meet the team', copy: 'Meet the people behind Paila when instructor profiles and photos are approved.', href: 'instructors.html', action: 'Meet the team' },

@@ -1,0 +1,130 @@
+:root {
+  color-scheme: light;
+  --paper: #f9f6ef;
+  --ink: #193b32;
+  --muted: #55685e;
+  --line: #c7cec2;
+  --gutter: clamp(16px, 3.6vw, 64px);
+  --travel: clamp(3000px, 530svh, 5600px);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+* {box-sizing: border-box}
+body, h1, h2, p, figure {margin: 0}
+button, input {font: inherit}
+button, a {touch-action: manipulation}
+button {color: inherit; cursor: pointer}
+a {color: inherit; text-underline-offset: .23em}
+button:focus-visible, a:focus-visible, input:focus-visible {
+  outline: 3px solid #d38643;
+  outline-offset: 3px;
+}
+[hidden] {display: none !important}
+.sr {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap}
+.viewport {display: flex; flex-direction: column; min-height: 70vh}
+body.ready .viewport {min-height: 0; height: 100vh; height: 100svh; position: sticky; top: 0}
+body.ready:not(.still) .journey {height: calc(100vh + var(--travel)); height: calc(100svh + var(--travel))}
+.masthead {min-height: 70px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 8px var(--gutter); z-index: 1}
+.brand {display: inline-flex; align-items: center; gap: 10px; width: fit-content; text-decoration: none; white-space: nowrap; font-size: .94rem; letter-spacing: .105em; font-weight: 600}
+.monogram {width: 39px; height: 39px; display: grid; place-items: center; border-radius: 50% 50% 6px 50%; background: var(--ink); color: white; font: 1.65rem/1 Georgia, serif}
+.masthead h1 {font: 500 clamp(1.25rem, 2vw, 1.7rem)/1.1 Georgia, "Times New Roman", serif; letter-spacing: -.025em}
+.header-actions {justify-self: end; display: flex; gap: clamp(12px, 2vw, 27px); align-items: center; white-space: nowrap}
+.header-actions a, .header-actions button {font-size: .9rem; font-weight: 600}
+.header-actions a {padding-block: 12px}
+.header-actions button {border: 1px solid #9aa99a; background: transparent; border-radius: 99px; padding: 9px 15px; min-height: 40px}
+.header-actions button[aria-pressed=true] {background: var(--ink); color: white; border-color: var(--ink)}
+.scene {position: relative; isolation: isolate; overflow: hidden; background: #d4c4aa; min-height: 350px; flex: 1 1 auto}
+body.ready .scene {min-height: 0}
+.poster, .poster img, #film, .scene-shade {position: absolute; inset: 0; width: 100%; height: 100%; display: block}
+.poster img {object-fit: cover; object-position: 50% 52%}
+#film {pointer-events: auto}
+.scene-shade {pointer-events: none; background: linear-gradient(0deg, rgba(16, 30, 24, .73), rgba(16, 30, 24, .19) 21%, transparent 43%)}
+.hint {position: absolute; top: clamp(14px, 2.8vw, 34px); left: var(--gutter); display: flex; align-items: center; gap: 9px; padding: 8px 13px; border: 1px solid #ffffff85; border-radius: 40px; font-size: .87rem; font-weight: 600; line-height: 1.4; background: #f9f6eff2; color: var(--ink); pointer-events: none}
+.gesture {height: 15px; width: 10px; border: 1.5px solid currentColor; border-radius: 6px; position: relative}
+.gesture::after {content: ""; position: absolute; top: 2px; left: 2.9px; width: 1.5px; height: 4px; border-radius: 2px; background: currentColor}
+.room-caption {position: absolute; bottom: clamp(17px, 3.3vw, 45px); left: var(--gutter); right: var(--gutter); max-width: 47rem; color: white; pointer-events: none; text-shadow: 0 1px 3px #10281e80}
+.edition, .guide-kicker {font-size: .78rem; font-weight: 680; letter-spacing: .12em; text-transform: uppercase}
+.room-caption h2 {font: 500 clamp(2.4rem, 5vw, 5.1rem)/1.045 Georgia, "Times New Roman", serif; letter-spacing: -.05em; margin: 4px 0 6px}
+.room-caption > p:last-child {font-size: clamp(.98rem, 1.22vw, 1.15rem); line-height: 1.4; max-width: 38rem}
+.hotspot {position: absolute; transform: translate(-50%,-50%); border: 0; background: transparent; color: var(--ink); padding: 0; min-width: 44px; min-height: 44px; display: grid; place-items: center; z-index: 2}
+.hotspot > span:first-child {width: 36px; height: 36px; display: grid; place-items: center; font: 400 1.45rem/1 system-ui; border-radius: 50%; color: white; background: var(--ink); box-shadow: 0 0 0 3px #fff, 0 3px 12px #10261c73}
+.hotspot-label {position: absolute; background: #fbf8f2; color: var(--ink); top: -21px; border-radius: 3px; padding: 2px 6px; font-size: .78rem; font-weight: 650}
+.controls {display: flex; align-items: center; gap: clamp(22px, 5vw, 80px); min-height: 99px; padding: 11px var(--gutter) max(13px, env(safe-area-inset-bottom)); border-top: 1px solid #deded3}
+.route {flex: 1; min-width: 0}
+#progress {width: 100%; height: 22px; display: block; margin: 0; accent-color: var(--ink); cursor: pointer}
+#stops {display: flex; justify-content: space-between; margin-top: 0; gap: 5px}
+#stops button {min-height: 41px; background: transparent; border: 0; padding: 2px 4px; color: var(--muted); font-size: .93rem; font-weight: 500}
+#stops button:first-child {padding-left: 0}
+#stops button:last-child {padding-right: 0}
+#stops button[aria-current] {color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .38em; font-weight: 720}
+.next, .guide-actions button {background: var(--ink); color: #fff; border: 0; border-radius: 99px; min-height: 46px; padding: 10px 22px; font-weight: 650; font-size: .94rem}
+.next {min-width: 126px}
+.still-fallback {padding: 30px var(--gutter); line-height: 1.6}
+.still-fallback h2 {font: 2rem Georgia, serif}
+.still-images {display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 14px; margin: 18px 0}
+.still-images img {display: block; width: 100%; border-radius: 5px}
+.still-images figcaption {font-weight: 600}
+#class-notes {max-width: 46rem}
+dialog {width: min(460px, calc(100% - 28px)); max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain; padding: 0; border: 1px solid #a2ad9b; border-radius: 14px; background: var(--paper); color: var(--ink); box-shadow: 0 22px 85px #12241b66}
+dialog::backdrop {background: #132820a6}
+.guide-top, .guide-actions {display: flex; align-items: center; justify-content: space-between; gap: 14px}
+.guide-top {padding: 5px 16px 5px 23px; font-weight: 680; font-size: .88rem}
+.guide-top button {border: 0; background: transparent; min-height: 40px; padding: 6px; text-decoration: underline; text-underline-offset: 3px}
+.guide-photo {display: block; aspect-ratio: 2.5; width: 100%; object-fit: cover}
+.guide-body {padding: 20px clamp(18px, 4vw, 29px) 24px; line-height: 1.53}
+.guide-kicker {color: #4d675a}
+.guide-body h2 {font: 500 2.25rem/1.1 Georgia, serif; letter-spacing: -.045em; margin: 5px 0 16px}
+.guide-body p + p {margin-top: 11px}
+.guide-actions {margin-top: 21px; flex-wrap: wrap}
+.guide-actions a {font-size: .92rem; font-weight: 600}
+@media (max-width: 700px) {
+  .masthead {min-height: 56px; grid-template-columns: 1fr auto; gap: 3px 8px}
+  .masthead h1 {grid-row: 2; grid-column: 1 / -1; font: 500 1.14rem/1.15 Georgia, serif; padding: 0 0 3px}
+  .monogram {height: 30px; width: 30px; font-size: 1.35rem}
+  .brand {gap: 7px; font-size: .78rem}
+  .header-actions {gap: 12px; grid-column: 2; grid-row: 1}
+  .header-actions a, .header-actions button {font-size: .82rem}
+  .header-actions button {padding: 4px 12px; min-height: 36px}
+  .controls {min-height: 84px; gap: 10px; flex-wrap: wrap; padding-block: 6px max(6px, env(safe-area-inset-bottom))}
+  .route {min-width: 100%}
+  #stops button {min-height: 38px; font-size: .85rem}
+  .next {position: absolute; right: var(--gutter); top: 97px; min-height: 38px; min-width: 0; padding: 8px 13px; font-size: .82rem; z-index: 2; box-shadow: 0 1px 5px #18382b33}
+  .hint {top: 14px; font-size: .8rem; padding: 8px 11px}
+  .room-caption {bottom: 20px}
+  .room-caption > p:last-child {max-width: 30rem}
+}
+@media (max-height: 470px) and (orientation: landscape) {
+  .masthead {min-height: 40px; padding-block: 2px; grid-template-columns: 1fr auto 1fr}
+  .monogram {width: 28px; height: 28px; font-size: 1.1rem}
+  .masthead h1 {grid-row: auto; grid-column: auto; font-size: 1rem}
+  .header-actions {grid-column: auto}
+  .controls {min-height: 48px; padding-block: 1px; flex-wrap: nowrap}
+  .route {min-width: 0}
+  .next {position: static; min-height: 36px; padding: 5px 14px}
+  #progress {height: 14px}
+  #stops button {min-height: 31px}
+  .hint {top: 9px; padding-block: 4px}
+  .room-caption {bottom: 9px}
+  .room-caption h2 {font-size: 1.8rem; margin: 0 0 3px}
+  .room-caption p:last-child {font-size: .88rem}
+}
+@media (max-height: 300px) {
+  body.ready .viewport {min-height: 300px; position: relative}
+}
+html {scrollbar-gutter: stable}
+html.guide-open {overflow: hidden}
+#film {touch-action: pan-y pinch-zoom}
+@media (max-width: 700px) and (min-height: 471px) {
+  .masthead {grid-template-columns: 1fr auto auto; gap: 4px 12px}
+  .masthead h1 {grid-column: 1; grid-row: 2; padding: 1px 0 4px}
+  .header-actions {display: contents}
+  .header-actions .portal-link {grid-column: 2; grid-row: 1; justify-self: end}
+  .header-actions button {grid-column: 3; grid-row: 1; justify-self: end}
+  .header-actions .plan-link {grid-column: 2 / 4; grid-row: 2; justify-self: end; padding: 0 0 4px}
+}
+@media (max-width: 360px) {
+  .masthead {column-gap: 8px}
+  .brand {font-size: .71rem; gap: 5px}
+  .monogram {height: 26px; width: 26px}
+}

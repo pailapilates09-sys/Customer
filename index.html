@@ -1,2 +1,82 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A calm place to begin"><meta name="robots" content="noindex,nofollow"><title>Home | Paila Pilates</title><link rel="stylesheet" href="assets/css/styles.css"><script defer src="data/site-data.js"></script><script defer src="assets/js/shared.js"></script></head><body><a class="skip" href="#main">Skip to content</a><div class="draft-banner" role="status"><div class="wrap">Website preview · Class times, prices, team and contact details await Paila approval.</div></div><header class="site-header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="Paila Pilates home"><span class="mark" aria-hidden="true">P</span><span>PAILA <b>PILATES</b><small>MOVE WITH INTENTION</small></span></a><button class="menu" type="button" aria-label="Open menu" aria-controls="navigation" aria-expanded="false">Menu</button><nav id="navigation" aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="schedule.html">Schedule</a><a href="passes.html">Passes</a><a href="instructors.html">Instructors</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="directions.html">Directions</a><a href="studio/">Studio</a></nav></div></header><main id="main"><section class="hero"><div class="wrap hero-grid"><div><p class="eyebrow">Paila Pilates · Website preview</p><h1>Find your way<br><em>to movement.</em></h1><p class="lead">A welcoming home for your Pilates journey. We are preparing the studio details, class information and ways to get in touch.</p><div class="actions"><a class="button" href="experience.html">Explore Paila in motion</a><a class="button outline" href="studio/">Explore our studio</a><a class="button outline" href="schedule.html">Class information</a><a class="button outline" href="directions.html">Find the studio</a></div></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="arch"></div><span>MOVE<br>WITH<br>INTENTION</span></div></div></section><section class="section"><div class="wrap"><p class="eyebrow">Explore</p><h2>Everything in its place.</h2><div class="grid three"><article class="card"><p class="eyebrow">01</p><h3>Classes</h3><p>See the schedule once dates, levels and locations are approved.</p><a class="button outline" href="schedule.html">View schedule</a></article><article class="card"><p class="eyebrow">02</p><h3>Passes</h3><p>Compare approved options when pricing and terms are ready.</p><a class="button outline" href="passes.html">Explore passes</a></article><article class="card"><p class="eyebrow">03</p><h3>People</h3><p>Meet the instructors when their profiles and photos are approved.</p><a class="button outline" href="instructors.html">Meet the team</a></article></div></div></section><section class="section wash"><div class="wrap split"><div><p class="eyebrow">Thoughtful by design</p><h2>Room to move at your own pace.</h2></div><p class="lead">The Paila site will make it easy to learn about classes and choose a next step. Studio claims, facilities and policies will be added only from approved sources.</p></div></section></main><footer class="footer"><div class="wrap footer-grid"><div><strong>PAILA PILATES</strong><p>A preview of the Paila digital home. Business details are awaiting owner approval.</p></div><div><strong>Explore</strong><p><a href="schedule.html">Schedule</a> · <a href="passes.html">Passes</a> · <a href="instructors.html">Team</a></p></div><div><strong>Next step</strong><p><a href="directions.html">Get directions to Paila</a></p></div></div><div class="wrap fine">© <span id="year"></span> Paila Pilates · Draft, not a live booking service</div></footer></body></html>
+<html lang="en">
+<head>
+  <base href="studio/walkthrough/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f9f6ef">
+  <meta name="description" content="Walk through the Paila Pilates studio design, from the entrance to the reformer room.">
+  <title>Studio walkthrough | Paila Pilates</title>
+  <link rel="stylesheet" href="walk.css">
+  <script type="module" src="walk.js"></script>
+</head>
+<body>
+  <main id="main">
+    <div class="journey">
+      <div class="viewport">
+        <header class="masthead">
+          <a href="../../" class="brand" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
+          <h1>Studio walkthrough</h1>
+          <nav class="header-actions" aria-label="Website navigation">
+            <a href="../../explore.html" class="portal-link">Site menu</a>
+            <a href="../" class="plan-link">Floor plan</a>
+            <button id="motion" type="button" aria-pressed="false" hidden>Still views</button>
+          </nav>
+        </header>
+        <section class="scene" aria-label="Eye-level walkthrough of the studio design">
+          <picture class="poster">
+            <source media="(max-width: 700px) and (orientation: portrait)" srcset="media/touch-entrance.webp">
+            <img id="poster" src="media/wide-entrance.webp" alt="View through the glazed entrance toward the curved reception desk in Paila’s studio model." fetchpriority="high">
+          </picture>
+          <canvas id="film" aria-hidden="true"></canvas>
+          <div class="scene-shade" aria-hidden="true"></div>
+          <p id="hint" class="hint" hidden><span class="gesture" aria-hidden="true"></span><span id="hint-text">Scroll to walk</span></p>
+          <button id="hotspot" type="button" class="hotspot" aria-label="Open the first-class guide for this reformer" aria-haspopup="dialog" hidden><span aria-hidden="true">+</span><span class="hotspot-label">Reformer</span></button>
+          <div class="room-caption">
+            <p class="edition">Studio design preview</p>
+            <h2 id="room-name">Entrance</h2>
+            <p id="room-copy">Step through the glazed entrance and follow the curve of the reception desk.</p>
+          </div>
+        </section>
+        <section class="controls" aria-label="Walkthrough controls" hidden>
+          <div class="route">
+            <label class="sr" for="progress">Position along the studio walkthrough</label>
+            <input id="progress" type="range" min="0" max="180" step="1" value="0" aria-valuetext="Entrance">
+            <nav id="stops" aria-label="Jump to a room">
+              <button type="button" aria-current="location" data-stop="0">Entrance</button>
+              <button type="button" data-stop="1">Reception</button>
+              <button type="button" data-stop="2">Lounge</button>
+              <button type="button" data-stop="3">Reformer room</button>
+            </nav>
+          </div>
+          <button id="next-stop" type="button" class="next">Next room</button>
+          <button id="guide-button" type="button" class="next" aria-haspopup="dialog" hidden>First-class guide</button>
+        </section>
+      </div>
+    </div>
+    <section id="static-tour" class="still-fallback" aria-label="Studio room views">
+      <h2>Explore the rooms</h2>
+      <div class="still-images">
+        <figure><img src="media/wide-reception.webp" loading="lazy" alt="Paila’s reception desk beneath two ring lights."><figcaption>Reception</figcaption></figure>
+        <figure><img src="media/wide-lounge.webp" loading="lazy" alt="Seating and coffee shelves in the modelled lounge."><figcaption>Lounge</figcaption></figure>
+        <figure><img src="media/wide-reformer.webp" loading="lazy" alt="Two rows of reformers inside the studio design."><figcaption>Reformer room</figcaption></figure>
+      </div>
+      <a href="#class-notes">Read the first-class guide</a>
+      <p id="class-notes">For a first class, ask the instructor to point out the sliding carriage, footbar and springs. Take a moment to learn the names you will hear during the session.</p>
+    </section>
+    <p id="announce" class="sr" aria-live="polite" aria-atomic="true"></p>
+  </main>
+  <dialog id="guide" aria-labelledby="guide-title">
+    <div class="guide-top"><span>Paila Pilates</span><button id="close-guide" type="button" autofocus>Close</button></div>
+    <img class="guide-photo" src="media/reformer-detail.webp" alt="The upholstered carriage and raised footbar on a reformer in the studio model." loading="lazy">
+    <div class="guide-body">
+      <p class="guide-kicker">First-class guide</p>
+      <h2 id="guide-title">Meet the reformer.</h2>
+      <p>Look for the padded platform inside the frame. It’s called the carriage. It slides along rails, and springs give it resistance.</p>
+      <p>When you arrive for a first class, tell the instructor you’re new. Ask them to point out the footbar and straps and show you how the carriage feels before the session begins.</p>
+      <div class="guide-actions"><button type="button" id="resume">Back to the walk</button><a href="../../schedule.html">Class information</a></div>
+    </div>
+  </dialog>
+</body>
+</html>
