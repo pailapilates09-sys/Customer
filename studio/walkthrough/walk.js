@@ -21,7 +21,8 @@ const stopButtons = [...document.querySelectorAll('[data-stop]')];
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 let route, variant, still = false, frame = 0, painted = -1, activeRoom = -1;
 let walkBeforeStills = 0;
-let animation = 0, lastDirection = 1, bounds, fit, opener, lastScroll = 0, maskPixels;
+let animation = 0, lastDirection = 1, bounds, fit, maskPixels;
+let guideReturn = null;
 let missingFrames = false;
 const sheets = new Map();
 
@@ -82,8 +83,10 @@ function resize() {
 }
 
 function placeHotspot() {
-  hotspot.hidden = true;
-  if (painted < route.firstHit || !fit) return;
+  if (painted < route.firstHit || !fit) {
+    hotspot.hidden = true;
+    return;
+  }
   const candidates = route.views[variant].anchors[painted - route.firstHit] || [];
   const captionTop = $('.room-caption').getBoundingClientRect().top - bounds.top;
   for (const [u, v] of candidates) {
@@ -92,8 +95,9 @@ function placeHotspot() {
     hotspot.style.left = x + 'px';
     hotspot.style.top = y + 'px';
     hotspot.hidden = false;
-    break;
+    return;
   }
+  hotspot.hidden = true;
 }
 
 async function loadMask(kind) {
@@ -194,7 +198,7 @@ function travel() {
 }
 
 function readScroll() {
-  if (!still && !guide.open) setFrame(window.scrollY / travel() * route.last);
+  if (!still && !guideReturn) setFrame(window.scrollY / travel() * route.last);
 }
 
 function goTo(value) {
@@ -233,8 +237,8 @@ function setLayout() {
 
 function openGuide(source) {
   if (guide.open) return;
-  opener = source;
-  lastScroll = window.scrollY;
+  guideReturn = {source, frame: painted < 0 ? frame : painted};
+  setFrame(guideReturn.frame);
   document.documentElement.classList.add('guide-open');
   guide.showModal();
   $('#close-guide').focus({preventScroll: true});
@@ -304,9 +308,12 @@ function attachControls() {
     if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) guide.close();
   });
   guide.addEventListener('close', () => {
+    if (guide.open || !guideReturn) return;
+    const {source, frame: returnFrame} = guideReturn;
     document.documentElement.classList.remove('guide-open');
-    window.scrollTo({top: lastScroll, behavior: 'instant'});
-    (opener?.hidden ? $('#guide-button') : opener)?.focus({preventScroll: true});
+    (source.hidden ? $('#guide-button') : source).focus({preventScroll: true});
+    goTo(returnFrame);
+    guideReturn = null;
   });
 }
 

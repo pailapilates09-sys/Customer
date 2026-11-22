@@ -23,7 +23,8 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 [hidden] {display: none !important}
 .sr {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap}
 .viewport {display: flex; flex-direction: column; min-height: 70vh}
-body.ready .viewport {min-height: 0; height: 100vh; height: 100svh; position: sticky; top: 0}
+body.ready .viewport {min-height: 0; height: 100vh; height: 100svh; position: fixed; inset: 0}
+body.still .viewport {position: relative}
 body.ready:not(.still) .journey {height: calc(100vh + var(--travel)); height: calc(100svh + var(--travel))}
 .masthead {min-height: 70px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 8px var(--gutter); z-index: 1}
 .brand {display: inline-flex; align-items: center; gap: 10px; width: fit-content; text-decoration: none; white-space: nowrap; font-size: .94rem; letter-spacing: .105em; font-weight: 600}
