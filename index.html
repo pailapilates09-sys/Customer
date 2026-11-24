@@ -1,82 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <base href="studio/walkthrough/">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#f9f6ef">
-  <meta name="description" content="Walk through the Paila Pilates studio design, from the entrance to the reformer room.">
-  <title>Studio walkthrough | Paila Pilates</title>
-  <link rel="stylesheet" href="walk.css?v=1afe5cef8852">
-  <script type="module" src="walk.js?v=a75a74f3ed57"></script>
+  <meta name="description" content="Choose from eight ways to browse Paila Pilates.">
+  <title>Choose your view | Paila Pilates</title>
+  <link rel="stylesheet" href="assets/css/views.css?v=c2fc0530b2bd"><script defer src="assets/js/views.js?v=70e6c191fda5"></script>
 </head>
 <body>
-  <main id="main">
-    <div class="journey">
-      <div class="viewport">
-        <header class="masthead">
-          <a href="../../" class="brand" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
-          <h1>Studio walkthrough</h1>
-          <nav class="header-actions" aria-label="Website navigation">
-            <a href="../../explore.html" class="portal-link">Site menu</a>
-            <a href="../" class="plan-link">Floor plan</a>
-            <button id="motion" type="button" aria-pressed="false" hidden>Still views</button>
-          </nav>
-        </header>
-        <section class="scene" aria-label="Eye-level walkthrough of the studio design">
-          <picture class="poster">
-            <source media="(max-width: 700px) and (orientation: portrait)" srcset="media/touch-entrance.webp">
-            <img id="poster" src="media/wide-entrance.webp" alt="View through the glazed entrance toward the curved reception desk in Paila’s studio model." fetchpriority="high">
-          </picture>
-          <canvas id="film" aria-hidden="true"></canvas>
-          <div class="scene-shade" aria-hidden="true"></div>
-          <p id="hint" class="hint" hidden><span class="gesture" aria-hidden="true"></span><span id="hint-text">Scroll to walk</span></p>
-          <button id="hotspot" type="button" class="hotspot" aria-label="Open the first-class guide for this reformer" aria-haspopup="dialog" hidden><span aria-hidden="true">+</span><span class="hotspot-label">Reformer</span></button>
-          <div class="room-caption">
-            <p class="edition">Studio design preview</p>
-            <h2 id="room-name">Entrance</h2>
-            <p id="room-copy">Step through the glazed entrance and follow the curve of the reception desk.</p>
-          </div>
-        </section>
-        <section class="controls" aria-label="Walkthrough controls" hidden>
-          <div class="route">
-            <label class="sr" for="progress">Position along the studio walkthrough</label>
-            <input id="progress" type="range" min="0" max="180" step="1" value="0" aria-valuetext="Entrance">
-            <nav id="stops" aria-label="Jump to a room">
-              <button type="button" aria-current="location" data-stop="0">Entrance</button>
-              <button type="button" data-stop="1">Reception</button>
-              <button type="button" data-stop="2">Lounge</button>
-              <button type="button" data-stop="3">Reformer room</button>
-            </nav>
-          </div>
-          <button id="next-stop" type="button" class="next">Next room</button>
-          <button id="guide-button" type="button" class="next" aria-haspopup="dialog" hidden>First-class guide</button>
-        </section>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast"><div class="shell mast-inner">
+    <a class="wordmark" href="index.html" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
+    <nav aria-label="Main navigation"><a href="schedule.html">Classes</a><a href="directions.html">Directions</a><a class="nav-pill" href="explore.html">Site menu</a></nav>
+  </div></header>
+  <main id="main" class="shell"><section class="entry">
+    <div class="entry-copy">
+      <h1>Choose your <em>view.</em></h1>
+      <p>Find a class, plan your first visit, or walk through the Paila Pilates studio.</p>
+      <div id="quick-choice" class="picker" hidden>
+        <label class="sr" for="mode-choice">Website view</label>
+        <span class="select-wrap"><select id="mode-choice"><option value="classic">Classic menu</option><option value="directory">Searchable directory</option><option value="grid">Visual grid</option><option value="guide">First-visit guide</option><option value="map">Interactive floor plan</option><option value="walk">Studio walkthrough</option><option value="gallery">Curved gallery</option><option value="rail">Hanging card rail</option></select></span>
+        <a class="action primary" href="explore.html">Open view</a>
       </div>
     </div>
-    <section id="static-tour" class="still-fallback" aria-label="Studio room views">
-      <h2>Explore the rooms</h2>
-      <div class="still-images">
-        <figure><img src="media/wide-reception.webp" loading="lazy" alt="Paila’s reception desk beneath two ring lights."><figcaption>Reception</figcaption></figure>
-        <figure><img src="media/wide-lounge.webp" loading="lazy" alt="Seating and coffee shelves in the modelled lounge."><figcaption>Lounge</figcaption></figure>
-        <figure><img src="media/wide-reformer.webp" loading="lazy" alt="Two rows of reformers inside the studio design."><figcaption>Reformer room</figcaption></figure>
-      </div>
-      <a href="#class-notes">Read the first-class guide</a>
-      <p id="class-notes">For a first class, ask the instructor to point out the sliding carriage, footbar and springs. Take a moment to learn the names you will hear during the session.</p>
-    </section>
-    <p id="announce" class="sr" aria-live="polite" aria-atomic="true"></p>
-  </main>
-  <dialog id="guide" aria-labelledby="guide-title">
-    <div class="guide-top"><span>Paila Pilates</span><button id="close-guide" type="button" autofocus>Close</button></div>
-    <img class="guide-photo" src="media/reformer-detail.webp" alt="The upholstered carriage and raised footbar on a reformer in the studio model." loading="lazy">
-    <div class="guide-body">
-      <p class="guide-kicker">First-class guide</p>
-      <h2 id="guide-title">Meet the reformer.</h2>
-      <p>Look for the padded platform inside the frame. It’s called the carriage. It slides along rails, and springs give it resistance.</p>
-      <p>When you arrive for a first class, tell the instructor you’re new. Ask them to point out the footbar and straps and show you how the carriage feels before the session begins.</p>
-      <div class="guide-actions"><button type="button" id="resume">Back to the walk</button><a href="../../schedule.html">Class information</a></div>
-    </div>
-  </dialog>
+    <figure class="cover">
+      <img src="assets/views/reception.webp" srcset="assets/views/reception-small.webp 480w, assets/views/reception.webp 840w" sizes="(max-width: 690px) 95vw, (max-width: 1200px) 48vw, 580px" width="840" height="490" fetchpriority="high" alt="The curved reception desk and ring lights in the Paila studio design.">
+      <figcaption>Studio design <span>·</span> Reception</figcaption>
+    </figure>
+  </section>
+  <section class="choose-section" aria-labelledby="all-views"><div class="section-head"><h2 id="all-views">Explore in eight ways</h2><a class="text-link" href="compare-views.html">Compare views</a></div>
+    <div class="view-grid"><a class="view-card" href="explore.html" data-mode="classic">
+      <div class="thumbnail thumb-classic" aria-hidden="true"><div class="sample-page"><i></i><i></i><i></i><b></b><b></b></div></div><div class="tile-copy"><h3>Classic menu</h3><p>Go straight to classes, passes and directions.</p></div></a>
+<a class="view-card" href="directory.html" data-mode="directory">
+      <div class="thumbnail thumb-directory" aria-hidden="true"><div class="sample-search"><span></span><i></i><i></i><i></i></div></div><div class="tile-copy"><h3>Searchable directory</h3><p>Find a page by its name or a keyword.</p></div></a>
+<a class="view-card" href="visual-grid.html" data-mode="grid">
+      <div class="thumbnail thumb-grid" aria-hidden="true"><div class="sample-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="tile-copy"><h3>Visual grid</h3><p>Browse the website by picture and topic.</p></div></a>
+<a class="view-card" href="first-visit.html" data-mode="guide">
+      <div class="thumbnail thumb-guide" aria-hidden="true"><div class="sample-steps"><i></i><i></i><i></i></div></div><div class="tile-copy"><h3>First-visit guide</h3><p>Plan your first visit in three steps.</p></div></a>
+<a class="view-card" href="studio/" data-mode="map">
+      <div class="thumbnail thumb-map" aria-hidden="true"><img loading="lazy" src="studio/plan.svg" alt="" width="190" height="170"></div><div class="tile-copy"><h3>Interactive floor plan</h3><p>Pick a zone on the plan to explore the space.</p></div></a>
+<a class="view-card" href="studio/walkthrough/" data-mode="walk">
+      <div class="thumbnail thumb-walk" aria-hidden="true"><img loading="lazy" src="assets/views/practice.webp" alt="" width="520" height="325"></div><div class="tile-copy"><h3>Studio walkthrough</h3><p>Walk from reception to the reformer room.</p></div></a>
+<a class="view-card" href="experience.html?view=gallery" data-mode="gallery">
+      <div class="thumbnail thumb-gallery" aria-hidden="true"><div class="sample-arc"><i></i><i></i><i></i><i></i><i></i></div></div><div class="tile-copy"><h3>Curved gallery</h3><p>Drag cards around an arc and open a section.</p></div></a>
+<a class="view-card" href="experience.html?view=rail" data-mode="rail">
+      <div class="thumbnail thumb-rail" aria-hidden="true"><div class="sample-rail"><i></i><i></i><i></i><i></i><i></i></div></div><div class="tile-copy"><h3>Hanging card rail</h3><p>Slide along the rail to choose a section.</p></div></a></div>
+  </section></main>
+  <footer class="shell foot"><strong>Paila Pilates</strong><nav aria-label="Footer"><a href="index.html">All views</a><a href="directory.html">Directory</a><a href="contact.html">Contact</a></nav></footer>
 </body>
 </html>

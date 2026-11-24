@@ -3,3 +3,8 @@
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.directions-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:52px}.map-shell{border:1px solid var(--line);background:var(--sage);border-radius:20px;overflow:hidden;min-height:420px}.map-shell iframe{display:block;width:100%;height:420px;border:0}@media(max-width:850px){.directions-grid{grid-template-columns:1fr;gap:32px}.map-shell,.map-shell iframe{min-height:360px;height:360px}}
 
 @media(min-width:851px) and (max-width:1050px){.nav{gap:14px}nav{gap:12px}nav a{font-size:.82rem}.brand{font-size:.95rem}}
+
+.mobile-view{display:none}
+#return-view{padding-block:8px;font-size:.9rem;font-weight:620}
+#return-view[hidden],#return-view a[hidden]{display:none}
+@media(max-width:850px){.site-header .nav{gap:9px}.mobile-view{display:inline-flex;align-items:center;min-height:44px;margin-left:auto;font-size:.9rem;font-weight:650;white-space:nowrap}}

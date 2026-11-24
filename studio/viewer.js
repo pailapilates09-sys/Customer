@@ -12,11 +12,28 @@ function pt([x,y]) {return [x,-y];}
 function path(o) {return o.points.map(pt).map(p=>p.join(',')).join(' ');}
 function midpoint(o) {const a=o.points; return [a.reduce((s,p)=>s+p[0],0)/a.length,a.reduce((s,p)=>s+p[1],0)/a.length];}
 const labelAt={'ZONE-MAIN':[4900,8900],'ZONE-BALCONY':[14870,14300],'ZONE-CORE':[12700,6200],'ZONE-TOILET':[12600,1250],'LIFT-01':[14000,10000],'LIFT-02':[13600,7800],'STAIR-01':[13200,5100]};
+const zonePages = {
+ 'ZONE-MAIN': [['../schedule.html','Class information'],['walkthrough/','Walk through the studio']],
+ 'ZONE-BALCONY': [['../about.html','About Paila'],['../contact.html','Contact information']],
+ 'ZONE-CORE': [['../directions.html','Get directions'],['../first-visit.html#arrival','Plan your arrival']],
+ 'ZONE-TOILET': [['../contact.html','Contact information'],['../first-visit.html','First-visit guide']]
+};
 function select(id) {
  selected=id; const o=geometry.objects.find(x=>x.id===id); if(!o)return;
  $('#selection-title').textContent=o.label;
  $('#selection-text').textContent=client ? (o.note || 'Source-derived traced geometry; exact position and size await verification.') : ({'ZONE-MAIN':'Explore the open floor shown in the architectural plan. The final studio fit-out is still to be confirmed.','ZONE-BALCONY':'An outdoor edge to the studio. Details and access remain subject to confirmation.','ZONE-CORE':'Stairs and lifts are indicated in the architectural source. Visitor routing has not yet been confirmed.','ZONE-TOILET':'The plan includes a toilet area. Its precise arrangement is being reviewed.'}[id] || 'Shown as part of the studio layout preview.');
  $('#selection-id').textContent=client ? `${o.id} · ${o.status.replaceAll('_',' ').toLowerCase()}` : '';
+ const links = $('#zone-links');
+ if (links) {
+  links.replaceChildren();
+  for (const [href, label] of zonePages[id] || [['../directory.html','View the website directory']]) {
+   if (links.childNodes.length) links.append(' · ');
+   const a = document.createElement('a');
+   a.href = href;
+   a.textContent = label;
+   links.append(a);
+  }
+ }
  svg.querySelectorAll('.studio-object').forEach(n=>n.classList.toggle('selected',n.dataset.id===id));
  model3d?.select(id);
 }

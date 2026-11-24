@@ -1,9 +1,10 @@
 from pathlib import Path
 from html import escape
+from tools_views import VIEWS, asset_url, build_views
 root=Path(__file__).parent
-nav=[('index.html','Home'),('schedule.html','Schedule'),('passes.html','Passes'),('instructors.html','Instructors'),('about.html','About'),('contact.html','Contact'),('directions.html','Directions'),('studio/','Studio')]
+nav=[('index.html','Change view'),('schedule.html','Schedule'),('passes.html','Passes'),('instructors.html','Instructors'),('about.html','About'),('contact.html','Contact'),('directions.html','Directions'),('studio/','Studio')]
 notice='<div class="draft-banner" role="status"><div class="wrap">Website preview · Class times, prices, team and contact details await Paila approval.</div></div>'
-header='''<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="Paila Pilates home"><span class="mark" aria-hidden="true">P</span><span>PAILA <b>PILATES</b><small>MOVE WITH INTENTION</small></span></a><button class="menu" type="button" aria-label="Open menu" aria-controls="navigation" aria-expanded="false">Menu</button><nav id="navigation" aria-label="Main navigation">{links}</nav></div></header>'''
+header='''<header class="site-header"><div class="wrap nav"><a class="brand" href="index.html" aria-label="Paila Pilates home"><span class="mark" aria-hidden="true">P</span><span>PAILA <b>PILATES</b><small>MOVE WITH INTENTION</small></span></a><a class="mobile-view" href="index.html">Change view</a><button class="menu" type="button" aria-label="Open menu" aria-controls="navigation" aria-expanded="false">Menu</button><nav id="navigation" aria-label="Main navigation">{links}</nav></div></header>'''
 footer='''<footer class="footer"><div class="wrap footer-grid"><div><strong>PAILA PILATES</strong><p>A preview of the Paila digital home. Business details are awaiting owner approval.</p></div><div><strong>Explore</strong><p><a href="schedule.html">Schedule</a> · <a href="passes.html">Passes</a> · <a href="instructors.html">Team</a></p></div><div><strong>Next step</strong><p><a href="contact.html">Contact details pending approval</a></p></div></div><div class="wrap fine">© <span id="year"></span> Paila Pilates · Draft, not a live booking service</div></footer>'''
 def panel(kicker,title,body,href=None,label=None):
     link=f'<a class="button outline" href="{href}">{label}</a>' if href else ''
@@ -20,7 +21,13 @@ pages={
 for name,(title,description,body) in pages.items():
     links=''.join(f'<a href="{href}"'+(' aria-current="page"' if href==name and name!='index.html' else '')+f'>{label}</a>' for href,label in nav)
     page='<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="'+escape(description,quote=True)+'"><meta name="robots" content="noindex,nofollow"><title>'+escape(title)+' | Paila Pilates</title><link rel="stylesheet" href="assets/css/styles.css"><script defer src="data/site-data.js"></script><script defer src="assets/js/shared.js"></script></head><body><a class="skip" href="#main">Skip to content</a>'+notice+header.replace('{links}',links)+'<main id="main">'+body+'</main>'+footer+'</body></html>\n'
+    page = page.replace('href="assets/css/styles.css"', f'href="{asset_url(root, "assets/css/styles.css")}"')
+    page = page.replace('src="assets/js/shared.js"', f'src="{asset_url(root, "assets/js/shared.js")}"')
     destination = 'explore.html' if name == 'index.html' else name
+    if destination != 'explore.html':
+        choices = ''.join(f'<a data-mode="{v.key}" href="{v.href}" hidden>Back to {v.name.lower()}</a>' for v in VIEWS)
+        return_nav = f'<div id="return-view" class="wrap" hidden>{choices}</div>'
+        page = page.replace('<main id="main">', '<main id="main">' + return_nav)
     if destination == 'explore.html':
         page = page.replace('<title>Home | Paila Pilates</title>', '<title>Site menu | Paila Pilates</title>')
         page = page.replace('<a href="contact.html">Contact details pending approval</a>',
@@ -28,6 +35,4 @@ for name,(title,description,body) in pages.items():
     (root / destination).write_text(page)
 
 
-# The homepage uses the same tour and media as the direct studio link.
-walkthrough = (root / 'studio/walkthrough/index.html').read_text()
-(root / 'index.html').write_text(walkthrough.replace('<head>', '<head>\n  <base href="studio/walkthrough/">', 1))
+build_views(root)

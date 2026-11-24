@@ -47,7 +47,7 @@ body.ready .scene {min-height: 0}
 .room-caption {position: absolute; bottom: clamp(17px, 3.3vw, 45px); left: var(--gutter); right: var(--gutter); max-width: 47rem; color: white; pointer-events: none; text-shadow: 0 1px 3px #10281e80}
 .edition, .guide-kicker {font-size: .78rem; font-weight: 680; letter-spacing: .12em; text-transform: uppercase}
 .room-caption h2 {font: 500 clamp(2.4rem, 5vw, 5.1rem)/1.045 Georgia, "Times New Roman", serif; letter-spacing: -.05em; margin: 4px 0 6px}
-.room-caption > p:last-child {font-size: clamp(.98rem, 1.22vw, 1.15rem); line-height: 1.4; max-width: 38rem}
+#room-copy {font-size: clamp(.98rem, 1.22vw, 1.15rem); line-height: 1.4; max-width: 38rem}
 .hotspot {position: absolute; transform: translate(-50%,-50%); border: 0; background: transparent; color: var(--ink); padding: 0; min-width: 44px; min-height: 44px; display: grid; place-items: center; z-index: 2}
 .hotspot > span:first-child {width: 36px; height: 36px; display: grid; place-items: center; font: 400 1.45rem/1 system-ui; border-radius: 50%; color: white; background: var(--ink); box-shadow: 0 0 0 3px #fff, 0 3px 12px #10261c73}
 .hotspot-label {position: absolute; background: #fbf8f2; color: var(--ink); top: -21px; border-radius: 3px; padding: 2px 6px; font-size: .78rem; font-weight: 650}
@@ -93,7 +93,7 @@ dialog::backdrop {background: #132820a6}
   .next {position: absolute; right: var(--gutter); top: 97px; min-height: 38px; min-width: 0; padding: 8px 13px; font-size: .82rem; z-index: 2; box-shadow: 0 1px 5px #18382b33}
   .hint {top: 14px; font-size: .8rem; padding: 8px 11px}
   .room-caption {bottom: 20px}
-  .room-caption > p:last-child {max-width: 30rem}
+  #room-copy {max-width: 30rem}
 }
 @media (max-height: 470px) and (orientation: landscape) {
   .masthead {min-height: 40px; padding-block: 2px; grid-template-columns: 1fr auto 1fr}
@@ -108,7 +108,7 @@ dialog::backdrop {background: #132820a6}
   .hint {top: 9px; padding-block: 4px}
   .room-caption {bottom: 9px}
   .room-caption h2 {font-size: 1.8rem; margin: 0 0 3px}
-  .room-caption p:last-child {font-size: .88rem}
+  #room-copy {font-size: .88rem}
 }
 @media (max-height: 300px) {
   body.ready .viewport {min-height: 300px; position: relative}
@@ -128,4 +128,12 @@ html.guide-open {overflow: hidden}
   .masthead {column-gap: 8px}
   .brand {font-size: .71rem; gap: 5px}
   .monogram {height: 26px; width: 26px}
+}
+
+.room-links {display: flex; align-items: center; gap: 18px; margin-top: 4px; pointer-events: none}
+.room-links a {display: inline-flex; align-items: center; min-height: 40px; color: #fff; font-weight: 650; font-size: .95rem; pointer-events: auto; text-shadow: 0 1px 4px #0c281b}
+.fallback-links {display: flex; gap: 16px; flex-wrap: wrap; margin-block: 14px}
+@media (max-height: 470px) and (orientation: landscape) {
+  .room-links {margin-top: 0}
+  .room-links a {min-height: 28px; font-size: .86rem}
 }

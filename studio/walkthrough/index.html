@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#f9f6ef">
   <meta name="description" content="Walk through the Paila Pilates studio design, from the entrance to the reformer room.">
   <title>Studio walkthrough | Paila Pilates</title>
-  <link rel="stylesheet" href="walk.css?v=1afe5cef8852">
-  <script type="module" src="walk.js?v=a75a74f3ed57"></script>
+  <link rel="stylesheet" href="walk.css?v=44a6157a4d01">
+  <script type="module" src="walk.js?v=e07862b4da3b"></script>
 </head>
 <body>
   <main id="main">
@@ -18,13 +18,13 @@
           <a href="../../" class="brand" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
           <h1>Studio walkthrough</h1>
           <nav class="header-actions" aria-label="Website navigation">
-            <a href="../../explore.html" class="portal-link">Site menu</a>
+            <a href="../../" class="portal-link">Change view</a>
             <a href="../" class="plan-link">Floor plan</a>
             <button id="motion" type="button" aria-pressed="false" hidden>Still views</button>
           </nav>
         </header>
         <section class="scene" aria-label="Eye-level walkthrough of the studio design">
-          <picture class="poster">
+          <picture class="poster" data-room="entrance">
             <source media="(max-width: 700px) and (orientation: portrait)" srcset="media/touch-entrance.webp">
             <img id="poster" src="media/wide-entrance.webp" alt="View through the glazed entrance toward the curved reception desk in Paila’s studio model." fetchpriority="high">
           </picture>
@@ -36,6 +36,7 @@
             <p class="edition">Studio design preview</p>
             <h2 id="room-name">Entrance</h2>
             <p id="room-copy">Step through the glazed entrance and follow the curve of the reception desk.</p>
+            <nav class="room-links" aria-label="Explore Paila from this room"><a id="room-link" href="../../directions.html">Get directions</a><a href="../../explore.html">Site menu</a></nav>
           </div>
         </section>
         <section class="controls" aria-label="Walkthrough controls" hidden>
@@ -56,11 +57,13 @@
     </div>
     <section id="static-tour" class="still-fallback" aria-label="Studio room views">
       <h2>Explore the rooms</h2>
-      <div class="still-images">
+      <noscript><div class="still-images">
         <figure><img src="media/wide-reception.webp" loading="lazy" alt="Paila’s reception desk beneath two ring lights."><figcaption>Reception</figcaption></figure>
         <figure><img src="media/wide-lounge.webp" loading="lazy" alt="Seating and coffee shelves in the modelled lounge."><figcaption>Lounge</figcaption></figure>
         <figure><img src="media/wide-reformer.webp" loading="lazy" alt="Two rows of reformers inside the studio design."><figcaption>Reformer room</figcaption></figure>
       </div>
+      </noscript>
+      <nav class="fallback-links" aria-label="Open a studio photograph"><a href="media/wide-reception.webp">Reception photo</a><a href="media/wide-lounge.webp">Lounge photo</a><a href="media/wide-reformer.webp">Reformer room photo</a></nav>
       <a href="#class-notes">Read the first-class guide</a>
       <p id="class-notes">For a first class, ask the instructor to point out the sliding carriage, footbar and springs. Take a moment to learn the names you will hear during the session.</p>
     </section>
@@ -68,7 +71,7 @@
   </main>
   <dialog id="guide" aria-labelledby="guide-title">
     <div class="guide-top"><span>Paila Pilates</span><button id="close-guide" type="button" autofocus>Close</button></div>
-    <img class="guide-photo" src="media/reformer-detail.webp" alt="The upholstered carriage and raised footbar on a reformer in the studio model." loading="lazy">
+    <img class="guide-photo" data-src="media/reformer-detail.webp" alt="The upholstered carriage and raised footbar on a reformer in the studio model." loading="lazy">
     <div class="guide-body">
       <p class="guide-kicker">First-class guide</p>
       <h2 id="guide-title">Meet the reformer.</h2>

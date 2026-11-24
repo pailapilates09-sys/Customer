@@ -130,7 +130,16 @@
     if (!dialog.open) dialog.showModal();
   }
 
-  function setView(next) {
+  function requestedView() {
+    return new URLSearchParams(location.search).get('view') === 'rail' ? 'rail' : 'gallery';
+  }
+
+  function setView(next, updateHistory = false) {
+    if (updateHistory && next !== view) {
+      const url = new URL(location.href);
+      url.searchParams.set('view', next);
+      history.pushState(null, '', url);
+    }
     view = next;
     tabs.forEach(tab => {
       const active = tab.dataset.view === view;
@@ -144,13 +153,13 @@
   }
 
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => setView(tab.dataset.view));
+    tab.addEventListener('click', () => setView(tab.dataset.view, true));
     tab.addEventListener('keydown', event => {
       const key = event.key;
       if (!['ArrowLeft','ArrowRight','Home','End'].includes(key)) return;
       event.preventDefault();
       const next = key === 'Home' ? 0 : key === 'End' ? tabs.length - 1 : (index + (key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-      setView(tabs[next].dataset.view);
+      setView(tabs[next].dataset.view, true);
       tabs[next].focus();
     });
   });
@@ -225,8 +234,9 @@
   }, {passive:true});
 
   addEventListener('resize', () => {drawGallery();centerRail();});
+  addEventListener('popstate', () => setView(requestedView()));
   reduced.addEventListener('change', () => {drawGallery();setView(view);});
   page.classList.add('motion-ready');
   choose(0);
-  setView('gallery');
+  setView(requestedView());
 })();
