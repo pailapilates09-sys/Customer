@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 from html import escape
 from pathlib import Path
+from tools_graph import graph_body, graph_thumbnail
 
 
 @dataclass(frozen=True)
@@ -32,6 +33,8 @@ VIEWS = (
          ('Specialist styling', 'Best for discovery', 'Good', '43 / 43 KB', 'Previous and Next')),
     View('rail', 'Hanging card rail', 'experience.html?view=rail', 'Slide along the rail to choose a section.',
          ('Familiar swipe pattern', 'Best for discovery', 'Excellent for swiping', '43 / 43 KB', 'Previous and Next')),
+    View('graph', 'Constellation graph', 'constellation.html', 'Zoom between connected pages and follow a link.',
+         ('Specialist', 'Explore related pages', 'Pinch or use buttons', '47 / 47 KB', 'Zoom keys and page list')),
 )
 
 
@@ -68,10 +71,13 @@ def link(href, label, css=''):
     return f'<a{klass} href="{escape(href, quote=True)}">{escape(label)}</a>'
 
 
-def page(root, title, description, body, *, home=False, interactive=False):
+def page(root, title, description, body, *, home=False, interactive=False, graph=False):
     stylesheet = asset_url(root, 'assets/css/views.css')
     script = (f'<script defer src="{asset_url(root, "assets/js/views.js")}"></script>'
               if interactive else '')
+    if graph:
+        script += (f'<link rel="stylesheet" href="{asset_url(root, "assets/css/constellation.css")}">'
+                   f'<script defer src="{asset_url(root, "assets/js/constellation.js")}"></script>')
     visit_link = link('explore.html', 'Site menu', 'nav-pill') if home else link('index.html', 'Change view', 'nav-pill')
     return f'''<!doctype html>
 <html lang="en">
@@ -120,6 +126,7 @@ def thumbnail(key):
         'walk': '<img loading="lazy" src="assets/views/practice.webp" alt="" width="520" height="325">',
         'gallery': '<div class="sample-arc"><i></i><i></i><i></i><i></i><i></i></div>',
         'rail': '<div class="sample-rail"><i></i><i></i><i></i><i></i><i></i></div>',
+        'graph': graph_thumbnail(),
     }
     return f'<div class="thumbnail thumb-{key}" aria-hidden="true">{thumbnails[key]}</div>'
 
@@ -143,10 +150,10 @@ def chooser(root):
       <figcaption>Studio design <span>·</span> Reception</figcaption>
     </figure>
   </section>
-  <section class="choose-section" aria-labelledby="all-views"><div class="section-head"><h2 id="all-views">Explore in eight ways</h2>{link('compare-views.html','Compare views','text-link')}</div>
+  <section class="choose-section" aria-labelledby="all-views"><div class="section-head"><h2 id="all-views">Explore in nine ways</h2>{link('compare-views.html','Compare views','text-link')}</div>
     <div class="view-grid">{cards}</div>
   </section>'''
-    return page(root, 'Choose your view', 'Choose from eight ways to browse Paila Pilates.', body, home=True, interactive=True)
+    return page(root, 'Choose your view', 'Choose from nine ways to browse Paila Pilates.', body, home=True, interactive=True)
 
 
 def directory(root):
@@ -219,6 +226,7 @@ def comparison(root):
         ('https://designsystem.digital.gov/components/step-indicator/', 'Step indicators'),
         ('https://www.w3.org/WAI/tutorials/carousels/', 'Accessible carousels'),
         ('https://www.w3.org/WAI/tutorials/images/imagemap/', 'Accessible image maps'),
+        ('https://obsidian.md/help/plugins/graph', 'Obsidian graph navigation'),
     )
     body = f'''<header class="page-intro"><h1>Compare the <em>views.</em></h1>
       <p>Choose by what you came to do.</p></header>
@@ -227,23 +235,30 @@ def comparison(root):
         <article><h2>First time here</h2><p>The {link('first-visit.html','first-visit guide')} takes you from the studio to class information and directions.</p></article>
         <article><h2>A feel for the space</h2><p>Open the {link('studio/walkthrough/','walkthrough')} for an eye-level visit, or the {link('studio/','floor plan')} to see the layout.</p></article>
       </div>
-      <section class="compare"><h2>Eight views, five criteria</h2>
+      <section class="compare"><h2>Nine views, five criteria</h2>
       <p>Familiarity estimates how common the pattern feels across websites. Paila visitor popularity is unmeasured. Routine tasks include finding classes, passes and directions. Smaller first loads usually open sooner on slow connections. The last column shows ways to browse using a keyboard or less motion.</p>
       <div class="table-scroll" role="region" aria-label="View comparison, scroll sideways on a small screen" tabindex="0">
       <table><caption class="sr">Paila website view comparison. Browsing ratings are editorial assessments. First-load figures are measured.</caption>
       <thead><tr><th scope="col">View</th>{headings}</tr></thead><tbody>{rows}</tbody></table></div>
       <details class="source-note"><summary>Measurements and sources</summary>
-      <p>First-load figures are rounded kilobytes (1 KB = 1,000 bytes). On 23 November 2026, each view opened in Chrome with a fresh set of asset URLs, in desktop and 390-pixel portrait viewports. We counted the page and its requested resources 3.2 seconds after load, before interaction. Network speed and device hardware also affect elapsed time.</p>
+      <p>First-load figures are rounded kilobytes (1 KB = 1,000 bytes). The original eight views were measured on 23 November 2026 and the constellation on 24 November. Each opened in Chrome with fresh asset URLs in desktop and 390-pixel portrait viewports. We counted the page and its requested resources 3.2 seconds after load, before interaction. Network speed and device hardware also affect elapsed time.</p>
       <p>The previous tour loaded 802 KB on desktop and 549 KB at phone width. The new tour uses smaller frames while you move and loads original detail when you pause. The chooser loads no animation frames. Switching the floor plan to 3D or moving through the tour requests more data.</p>
       <p>Familiarity, practicality and phone use are editorial assessments of these layouts. The comparison draws on the following guidance.</p><ul>
       {''.join('<li>'+link(url, title)+'</li>' for url,title in sources)}</ul></details></section>'''
-    return page(root, 'Compare views', 'Compare eight website views by familiarity, practicality, mobile use, speed and accessibility.', body)
+    return page(root, 'Compare views', 'Compare nine website views by familiarity, practicality, mobile use, speed and accessibility.', body)
+
+
+def constellation(root):
+    catalog = {topic.href: (topic.name, topic.summary) for topic in TOPICS}
+    catalog.update({v.href: (v.name, v.purpose) for v in VIEWS if v.key in ('guide', 'classic')})
+    body = graph_body(catalog)
+    return page(root, 'Constellation graph', 'Explore the connections between pages of Paila Pilates.', body, graph=True)
 
 
 def build_views(root):
     for filename, render in (
         ('index.html', chooser), ('directory.html', directory), ('visual-grid.html', visual_grid),
-        ('first-visit.html', first_visit), ('compare-views.html', comparison),
+        ('first-visit.html', first_visit), ('compare-views.html', comparison), ('constellation.html', constellation),
     ):
         (root / filename).write_text(render(root), encoding='utf-8')
 

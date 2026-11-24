@@ -58,7 +58,7 @@ h1 em {color: var(--clay); font-weight: 400}
 .section-head h2, .compare > h2 {font-size: clamp(1.85rem,3vw,2.8rem); letter-spacing: -.04em}
 .text-link {font-size: .95rem; font-weight: 630; padding: 5px 0; text-decoration-thickness: 1px}
 .view-grid, .topics {display: grid; gap: 17px}
-.view-grid {grid-template-columns: repeat(4,minmax(0,1fr))}
+.view-grid {grid-template-columns: repeat(3,minmax(0,1fr))}
 .view-card, .topic-card {display: flex; flex-direction: column; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: 8px; text-decoration: none}
 .view-card:hover, .topic-card:hover {border-color: #536a5b}
 .view-card:hover h3, .topic-card:hover h2 {text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .15em}
@@ -104,6 +104,8 @@ h1 em {color: var(--clay); font-weight: 400}
 .sample-arc i:nth-child(4) {transform: rotateY(-22deg); background: #b9b3c9}
 .sample-arc i:last-child {transform: rotateY(-38deg) translateY(4px); background: #cbcdb4}
 .thumb-rail {background: #dfdbc8}
+.thumb-graph {background: #e5eee5}
+.thumb-graph svg {height: 100%; width: min(100%, 215px)}
 .sample-rail {width: 158px; height: 55px; display: flex; justify-content: center; align-items: flex-start; gap: 4px; border-top: 3px solid #69735f; padding-top: 13px}
 .sample-rail i {position: relative; height: 38px; width: 20px; background: #b5c5ae; border: 1px solid #647660; border-radius: 3px; transform: rotate(-10deg); transform-origin: 50% -13px}
 .sample-rail i::before {content: ''; position: absolute; top: -15px; left: calc(50% - 4px); width: 7px; height: 14px; border: 1px solid #65745e; border-radius: 5px}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f9f6ef">
+  <meta name="description" content="Explore the connections between pages of Paila Pilates.">
+  <title>Constellation graph | Paila Pilates</title>
+  <link rel="stylesheet" href="assets/css/views.css?v=5e10f1f12cc4"><link rel="stylesheet" href="assets/css/constellation.css?v=aa36c08262b2"><script defer src="assets/js/constellation.js?v=8883efac3116"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast"><div class="shell mast-inner">
+    <a class="wordmark" href="index.html" aria-label="Paila Pilates home"><span class="monogram" aria-hidden="true">P</span><span>PAILA <b>PILATES</b></span></a>
+    <nav aria-label="Main navigation"><a href="schedule.html">Classes</a><a href="directions.html">Directions</a><a class="nav-pill" href="index.html">Change view</a></nav>
+  </div></header>
+  <main id="main" class="shell"><header class="page-intro graph-intro"><h1>Constellation <em>graph.</em></h1>
+      <p id="graph-hint" hidden>Pick a node to see its connections. Drag to pan and scroll or pinch to zoom.</p>
+      <noscript><p>Open a page on the map or choose one from the page list.</p></noscript></header>
+    <section class="graph-layout" aria-label="Explore connected pages">
+      <div class="graph-field">
+        <div class="graph-toolbar">
+          <ul class="graph-legend" aria-label="Page groups"><li class="group-practice">Practice</li><li class="group-studio">Studio</li><li class="group-visit">Visit</li></ul>
+          <div class="graph-controls" role="group" aria-label="Graph zoom" hidden>
+            <button type="button" id="zoom-out" aria-label="Zoom out" title="Zoom out (−)">−</button>
+            <output id="zoom-level" aria-label="Zoom level" aria-live="off">100%</output>
+            <button type="button" id="zoom-in" aria-label="Zoom in" title="Zoom in (+)">+</button>
+            <button type="button" id="graph-fit" title="Fit all pages (0)">Fit</button>
+          </div>
+        </div>
+        <svg id="graph-map" viewBox="0 0 720 350" role="group" aria-label="Page constellation" aria-describedby="graph-keys" tabindex="0">
+          <g class="graph-edges" aria-hidden="true"><path data-from="paila" data-to="classes" d="M357 157 L195 109"/><path data-from="paila" data-to="walk" d="M357 157 L505 96"/><path data-from="paila" data-to="about" d="M357 157 L642 167"/><path data-from="paila" data-to="guide" d="M357 157 L233 251"/><path data-from="classes" data-to="passes" d="M195 109 L79 52"/><path data-from="classes" data-to="instructors" d="M195 109 L272 38"/><path data-from="passes" data-to="members" d="M79 52 L62 180"/><path data-from="classes" data-to="guide" d="M195 109 L233 251"/><path data-from="guide" data-to="directions" d="M233 251 L450 267"/><path data-from="walk" data-to="plan" d="M505 96 L628 44"/><path data-from="plan" data-to="about" d="M628 44 L642 167"/><path data-from="about" data-to="contact" d="M642 167 L605 285"/><path data-from="directions" data-to="contact" d="M450 267 L605 285"/><path data-from="walk" data-to="guide" data-wide-bend="460 258" data-compact-bend="243 276" d="M505 96 Q460 258 233 251"/></g>
+          <g class="graph-nodes"><a class="graph-node group-home" href="explore.html" aria-label="Paila Pilates" data-node="paila" data-name="Paila Pilates" data-summary="Go straight to classes, passes and directions."
+          data-wide="357 157" data-compact="171 178" transform="translate(357 157)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="20.0"/><circle class="node-dot" r="15.0"/>
+          <text class="node-label" text-anchor="middle" y="33.0"><tspan x="0" dy="0">Paila Pilates</tspan></text></a><a class="graph-node group-practice" href="schedule.html" aria-label="Classes" data-node="classes" data-name="Classes" data-summary="Check class information and timetable updates."
+          data-wide="195 109" data-compact="86 106" transform="translate(195 109)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="16.4"/><circle class="node-dot" r="11.4"/>
+          <text class="node-label" text-anchor="middle" y="29.4"><tspan x="0" dy="0">Classes</tspan></text></a><a class="graph-node group-practice" href="passes.html" aria-label="Passes" data-node="passes" data-name="Passes" data-summary="Find the latest on passes, prices and terms."
+          data-wide="79 52" data-compact="48 30" transform="translate(79 52)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="14.2"/><circle class="node-dot" r="9.2"/>
+          <text class="node-label" text-anchor="middle" y="27.2"><tspan x="0" dy="0">Passes</tspan></text></a><a class="graph-node group-practice" href="instructors.html" aria-label="Instructors" data-node="instructors" data-name="Instructors" data-summary="Find information about the teaching team."
+          data-wide="272 38" data-compact="166 35" transform="translate(272 38)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="13.1"/><circle class="node-dot" r="8.1"/>
+          <text class="node-label" text-anchor="middle" y="26.1"><tspan x="0" dy="0">Instructors</tspan></text></a><a class="graph-node group-practice" href="member.html" aria-label="Member services" data-node="members" data-name="Member services" data-summary="Check the status of member accounts and services."
+          data-wide="62 180" data-compact="43 204" transform="translate(62 180)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="67" rx="17"/>
+          <circle class="node-ring" r="13.1"/><circle class="node-dot" r="8.1"/>
+          <text class="node-label" text-anchor="middle" y="26.1"><tspan x="0" dy="0">Member</tspan><tspan x="0" dy="15">services</tspan></text></a><a class="graph-node group-studio" href="studio/walkthrough/" aria-label="Studio walkthrough" data-node="walk" data-name="Studio walkthrough" data-summary="Step inside the studio design at eye level."
+          data-wide="505 96" data-compact="236 103" transform="translate(505 96)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="67" rx="17"/>
+          <circle class="node-ring" r="15.3"/><circle class="node-dot" r="10.3"/>
+          <text class="node-label" text-anchor="middle" y="28.3"><tspan x="0" dy="0">Studio</tspan><tspan x="0" dy="15">walkthrough</tspan></text></a><a class="graph-node group-studio" href="studio/" aria-label="Interactive floor plan" data-node="plan" data-name="Interactive floor plan" data-summary="Explore the studio layout in 2D or 3D."
+          data-wide="628 44" data-compact="286 27" transform="translate(628 44)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="67" rx="17"/>
+          <circle class="node-ring" r="14.2"/><circle class="node-dot" r="9.2"/>
+          <text class="node-label" text-anchor="middle" y="27.2"><tspan x="0" dy="0">Interactive</tspan><tspan x="0" dy="15">floor plan</tspan></text></a><a class="graph-node group-studio" href="about.html" aria-label="About Paila" data-node="about" data-name="About Paila" data-summary="Read the introduction to Paila Pilates."
+          data-wide="642 167" data-compact="289 208" transform="translate(642 167)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="15.3"/><circle class="node-dot" r="10.3"/>
+          <text class="node-label" text-anchor="middle" y="28.3"><tspan x="0" dy="0">About Paila</tspan></text></a><a class="graph-node group-visit" href="first-visit.html" aria-label="First-visit guide" data-node="guide" data-name="First-visit guide" data-summary="Plan your first visit in three steps."
+          data-wide="233 251" data-compact="91 290" transform="translate(233 251)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="67" rx="17"/>
+          <circle class="node-ring" r="16.4"/><circle class="node-dot" r="11.4"/>
+          <text class="node-label" text-anchor="middle" y="29.4"><tspan x="0" dy="0">First-visit</tspan><tspan x="0" dy="15">guide</tspan></text></a><a class="graph-node group-visit" href="directions.html" aria-label="Directions" data-node="directions" data-name="Directions" data-summary="Open the map pin and plan your journey."
+          data-wide="450 267" data-compact="204 287" transform="translate(450 267)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="14.2"/><circle class="node-dot" r="9.2"/>
+          <text class="node-label" text-anchor="middle" y="27.2"><tspan x="0" dy="0">Directions</tspan></text></a><a class="graph-node group-visit" href="contact.html" aria-label="Contact" data-node="contact" data-name="Contact" data-summary="Find contact information and the shared location pin."
+          data-wide="605 285" data-compact="266 372" transform="translate(605 285)">
+          <rect class="node-hit" x="-41" y="-22" width="82" height="52" rx="17"/>
+          <circle class="node-ring" r="14.2"/><circle class="node-dot" r="9.2"/>
+          <text class="node-label" text-anchor="middle" y="27.2"><tspan x="0" dy="0">Contact</tspan></text></a></g>
+        </svg>
+        <p class="graph-keys" id="graph-keys" hidden>Use arrow keys to pan, + and − to zoom, and 0 to fit all pages.</p>
+      </div>
+      <aside class="graph-detail" aria-labelledby="selected-name">
+        <div class="selected-page"><p class="graph-section-label">Selected page</p>
+        <h2 id="selected-name" tabindex="-1">Paila Pilates</h2><p id="selected-summary">Go straight to classes, passes and directions.</p>
+        <a class="action primary" id="open-node" href="explore.html" aria-label="Open classic menu">Open page</a></div>
+        <div class="node-neighbors" hidden><h3 id="neighbors-title">Connected pages</h3><ul id="neighbors"></ul></div>
+        <details class="graph-list"><summary>All 11 pages</summary>
+          <ul><li><a href="about.html">About Paila</a></li><li><a href="schedule.html">Classes</a></li><li><a href="contact.html">Contact</a></li><li><a href="directions.html">Directions</a></li><li><a href="first-visit.html">First-visit guide</a></li><li><a href="instructors.html">Instructors</a></li><li><a href="studio/">Interactive floor plan</a></li><li><a href="member.html">Member services</a></li><li><a href="explore.html">Paila Pilates</a></li><li><a href="passes.html">Passes</a></li><li><a href="studio/walkthrough/">Studio walkthrough</a></li></ul></details>
+      </aside>
+    </section><p class="sr" id="graph-status" role="status"></p></main>
+  <footer class="shell foot"><strong>Paila Pilates</strong><nav aria-label="Footer"><a href="index.html">All views</a><a href="directory.html">Directory</a><a href="contact.html">Contact</a></nav></footer>
+</body>
+</html>
